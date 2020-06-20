@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Card.module.scss';
 
-interface Character {
+interface CardProps {
   name: string;
   img: string;
 }
@@ -11,7 +11,7 @@ interface CardState {
 }
 
 
-class Card extends React.Component<Character, CardState> {
+class Card extends React.Component<CardProps, CardState> {
 
   state: Readonly<CardState> = {
     isFlipped: false

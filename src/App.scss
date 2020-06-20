@@ -6,8 +6,13 @@
   )
 ));
 @include List;
-@include Column;
-@include Container;
+@include Container((
+  gutter: 1rem,
+  maxWidth: 1000px,
+));
+@include Column((
+  gutter: this('container.gutter'),
+));
 
 h1 {
   color: #222;
