@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Mr. Tickle",
+    "img": "./assets/tickle.jpg"
+  },
+  {
+    "name": "Mr. Greedy",
+    "img": "./assets/greedy.jpg"
+  },
+  {
+    "name": "Mr. Happy",
+    "img": "./assets/happy.jpg"
+  },
+  {
+    "name": "Mr. Nosey",
+    "img": "./assets/nosey.jpg"
+  },
+  {
+    "name": "Mr. Sneeze",
+    "img": "./assets/sneeze.jpg"
+  },
+  {
+    "name": "Mr. Bump",
+    "img": "./assets/Bump.jpg"
+  },
+  {
+    "name": "Mr. Snow",
+    "img": "./assets/snow.jpg"
+  },
+  {
+    "name": "Mr. Messy",
+    "img": "./assets/messy.jpg"
+  },
+  {
+    "name": "Mr. Topsy-turvy",
+    "img": "./assets/topsy-turvy.jpg"
+  },
+  {
+    "name": "Mr. Silly",
+    "img": "./assets/silly.jpg"
+  },
+  {
+    "name": "Mr. Uppity",
+    "img": "./assets/uppity.jpg"
+  },
+  {
+    "name": "Mr. Small",
+    "img": "./assets/small.jpg"
+  },
+  {
+    "name": "Mr. Daydream",
+    "img": "./assets/daydream.jpg"
+  },
+  {
+    "name": "Mr. Forgetful",
+    "img": "./assets/forgetful.jpg"
+  },
+  {
+    "name": "Mr. Nervous",
+    "img": "./assets/nervous.jpg"
+  },
+  {
+    "name": "Mr. Noisy",
+    "img": "./assets/noisy.jpg"
+  },
+  {
+    "name": "Mr. Lazy",
+    "img": "./assets/lazy.jpg"
+  },
+  {
+    "name": "Mr. Funny",
+    "img": "./assets/funny.jpg"
+  }
+]
