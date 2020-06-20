@@ -6,13 +6,33 @@ interface Character {
   img: string;
 }
 
-function Card(props: Character) {
-  return (
-    <div className={styles.card}>
-      <img src={props.img} alt={props.name} width="200" />
-      <h4>{props.name}</h4>
-    </div>
-  );
+interface CardState {
+  isFlipped: boolean;
+}
+
+
+class Card extends React.Component<Character, CardState> {
+
+  state: Readonly<CardState> = {
+    isFlipped: false
+  }
+
+  render() {
+    const { isFlipped } = this.state;
+
+    return (
+      <div className={styles.wrapper}>
+        <div className={`${styles.card} ${isFlipped ? styles.flipped : ''}`}
+          onClick={() => this.setState(state => ({ isFlipped: !state.isFlipped}))}>
+          <div className={styles.front}>
+            <img src={this.props.img} alt={this.props.name} width="200" />
+            <h4>{this.props.name}</h4>
+          </div>
+          <div className={styles.back}>?</div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Card;
