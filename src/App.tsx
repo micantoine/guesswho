@@ -1,13 +1,12 @@
 import React from 'react';
-import Deck from './components/Deck';
+import SelectView from './views/Select';
 import './App.scss';
 
 
 function App() {
   return (
     <div className="container">
-      <h1>Select Your Character</h1>
-      <Deck />
+      <SelectView />
     </div>
   );
 }
