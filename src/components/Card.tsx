@@ -1,11 +1,13 @@
 import React from 'react';
+import { ICharacter } from '../interfaces';
 import styles from './Card.module.scss';
 
 interface CardProps {
-  name: string;
-  img: string;
-  isSelectable: boolean;
-  isFlippable: boolean;
+  character: ICharacter;
+  isSelectable?: boolean;
+  isFlippable?: boolean;
+  isSelected?: boolean;
+  onSelection?: (character: ICharacter) => void;
 }
 
 interface CardState {
@@ -28,6 +30,9 @@ class Card extends React.Component<CardProps, CardState> {
   handleClick() {
     if (this.props.isSelectable) {
       this.setState(state => ({ isSelected: !state.isSelected }));
+      if (this.props.onSelection !== undefined) {
+        this.props.onSelection(this.props.character);
+      }
     }
     if (this.props.isFlippable) {
       this.setState(state => ({ isFlipped: !state.isFlipped }));
@@ -45,8 +50,8 @@ class Card extends React.Component<CardProps, CardState> {
           ${isSelected ? styles.selected : ''}
         `}>
           <div className={styles.front}>
-            <img src={this.props.img} alt={this.props.name} width="200" />
-            <h4>{this.props.name}</h4>
+            <img src={this.props.character.img} alt={this.props.character.name} width="200" />
+            <h4>{this.props.character.name}</h4>
           </div>
           <div className={styles.back}>?</div>
         </div>
