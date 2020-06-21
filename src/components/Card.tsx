@@ -35,12 +35,15 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   render() {
-    const { isFlipped } = this.state;
+    const { isFlipped, isSelected } = this.state;
 
     return (
       <div className={styles.wrapper}
         onClick={this.handleClick}>
-        <div className={`${styles.card} ${isFlipped ? styles.flipped : ''}`}>
+        <div className={`${styles.card}
+          ${isFlipped ? styles.flipped : ''}
+          ${isSelected ? styles.selected : ''}
+        `}>
           <div className={styles.front}>
             <img src={this.props.img} alt={this.props.name} width="200" />
             <h4>{this.props.name}</h4>
