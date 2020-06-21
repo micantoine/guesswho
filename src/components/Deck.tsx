@@ -18,7 +18,7 @@ class Deck extends React.Component<Options> {
     const list = data.map((item, key) =>
       <li key={`card${key}`}
         data-oo-col="span4 span3@sm span2@md">
-        <Card character={item} {...this.props}/>
+        <Card character={{...item, id: key}} {...this.props}/>
       </li>
     );
 

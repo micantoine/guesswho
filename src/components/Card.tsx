@@ -1,22 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../store';
-import { setCharacter } from '../store/Players/actions';
+import {
+  setCharacter,
+  removeCharacter
+} from '../store/Players/actions';
 
 import { ICharacter } from '../interfaces';
 import styles from './Card.module.scss';
 
 interface CardProps {
+  characterId: number|null;
   character: ICharacter;
   isSelectable?: boolean;
   isFlippable?: boolean;
   isSelected?: boolean;
-  setCharacter: typeof setCharacter
+  setCharacter: typeof setCharacter,
+  removeCharacter: typeof removeCharacter,
 }
 
 interface CardState {
   isFlipped: boolean;
-  isSelected: boolean;
 }
 
 class Card extends React.Component<CardProps, CardState> {
@@ -28,13 +32,15 @@ class Card extends React.Component<CardProps, CardState> {
 
   state: Readonly<CardState> = {
     isFlipped: false,
-    isSelected: false,
   }
 
   handleClick() {
     if (this.props.isSelectable) {
-      this.setState(state => ({ isSelected: !state.isSelected }));
-      this.props.setCharacter(1);
+      if (this.props.characterId === this.props.character.id) {
+        this.props.removeCharacter();
+      } else {
+        this.props.setCharacter(this.props.character.id);
+      }
     }
     if (this.props.isFlippable) {
       this.setState(state => ({ isFlipped: !state.isFlipped }));
@@ -42,14 +48,14 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   render() {
-    const { isFlipped, isSelected } = this.state;
+    const { isFlipped } = this.state;
 
     return (
       <div className={styles.wrapper}
         onClick={this.handleClick}>
         <div className={`${styles.card}
           ${isFlipped ? styles.flipped : ''}
-          ${isSelected ? styles.selected : ''}
+          ${this.props.characterId === this.props.character.id ? styles.selected : ''}
         `}>
           <div className={styles.front}>
             <img src={this.props.character.img} alt={this.props.character.name} width="200" />
@@ -68,4 +74,7 @@ const mapStateToProps = (state: AppState) => {
   }
 }
 
-export default connect(mapStateToProps, { setCharacter })(Card);
+export default connect(
+  mapStateToProps,
+  { setCharacter, removeCharacter }
+)(Card);

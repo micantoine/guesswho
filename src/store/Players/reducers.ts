@@ -1,5 +1,6 @@
 import { 
   SET_CHARACTER,
+  REMOVE_CHARACTER,
   PlayersState,
   PlayersActionTypes
 } from './types';
@@ -15,6 +16,7 @@ export function playersReducer(
 
   switch (action.type) {
     case SET_CHARACTER:
+    case REMOVE_CHARACTER:
       return {
         characterId: action.characterId
       }
