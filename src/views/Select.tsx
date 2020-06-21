@@ -5,7 +5,7 @@ function SelectView() {
   return (
     <div className="container">
       <h1>Select Your Character</h1>
-      <Deck />
+      <Deck isSelectable={true} />
     </div>
   );
 }

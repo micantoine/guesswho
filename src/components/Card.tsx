@@ -4,16 +4,34 @@ import styles from './Card.module.scss';
 interface CardProps {
   name: string;
   img: string;
+  isSelectable: boolean;
+  isFlippable: boolean;
 }
 
 interface CardState {
   isFlipped: boolean;
+  isSelected: boolean;
 }
 
 class Card extends React.Component<CardProps, CardState> {
 
+  constructor(props: CardProps) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   state: Readonly<CardState> = {
-    isFlipped: false
+    isFlipped: false,
+    isSelected: false,
+  }
+
+  handleClick() {
+    if (this.props.isSelectable) {
+      this.setState(state => ({ isSelected: !state.isSelected }));
+    }
+    if (this.props.isFlippable) {
+      this.setState(state => ({ isFlipped: !state.isFlipped }));
+    }
   }
 
   render() {
@@ -21,7 +39,7 @@ class Card extends React.Component<CardProps, CardState> {
 
     return (
       <div className={styles.wrapper}
-        onClick={() => this.setState(state => ({ isFlipped: !state.isFlipped}))}>
+        onClick={this.handleClick}>
         <div className={`${styles.card} ${isFlipped ? styles.flipped : ''}`}>
           <div className={styles.front}>
             <img src={this.props.img} alt={this.props.name} width="200" />
