@@ -49,13 +49,14 @@ class Card extends React.Component<CardProps, CardState> {
 
   render() {
     const { isFlipped } = this.state;
+    let isSelected = this.props.isSelectable && this.props.characterId === this.props.character.id;
 
     return (
       <div className={styles.wrapper}
         onClick={this.handleClick}>
         <div className={`${styles.card}
           ${isFlipped ? styles.flipped : ''}
-          ${this.props.characterId === this.props.character.id ? styles.selected : ''}
+          ${isSelected ? styles.selected : ''}
         `}>
           <div className={styles.front}>
             <img src={this.props.character.img} alt={this.props.character.name} width="200" />
