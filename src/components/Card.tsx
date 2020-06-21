@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { AppState } from '../store';
+import { setCharacter } from '../store/Players/actions';
+
 import { ICharacter } from '../interfaces';
 import styles from './Card.module.scss';
 
@@ -7,7 +11,7 @@ interface CardProps {
   isSelectable?: boolean;
   isFlippable?: boolean;
   isSelected?: boolean;
-  onSelection?: (character: ICharacter) => void;
+  setCharacter: typeof setCharacter
 }
 
 interface CardState {
@@ -30,9 +34,7 @@ class Card extends React.Component<CardProps, CardState> {
   handleClick() {
     if (this.props.isSelectable) {
       this.setState(state => ({ isSelected: !state.isSelected }));
-      if (this.props.onSelection !== undefined) {
-        this.props.onSelection(this.props.character);
-      }
+      this.props.setCharacter(1);
     }
     if (this.props.isFlippable) {
       this.setState(state => ({ isFlipped: !state.isFlipped }));
@@ -60,4 +62,10 @@ class Card extends React.Component<CardProps, CardState> {
   }
 }
 
-export default Card;
+const mapStateToProps = (state: AppState) => {
+  return {
+    characterId: state.characterId
+  }
+}
+
+export default connect(mapStateToProps, { setCharacter })(Card);

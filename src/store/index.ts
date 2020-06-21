@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import { playersReducer } from "./Players/reducers";
 
-const store = createStore(playersReducer);
+export type AppState = ReturnType<typeof playersReducer>;
 
-export default store;
+export const store = createStore(playersReducer);
