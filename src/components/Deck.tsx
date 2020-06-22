@@ -3,33 +3,29 @@ import Card from './Card';
 import data from '../data.json';
 
 interface Options {
-  isSelectable: boolean;
-  isFlippable: boolean;
+  isSelectable?: boolean;
+  isFlippable?: boolean;
 }
 
-class Deck extends React.Component<Options> {
+function Deck(props:Options = {
+  isSelectable: false,
+  isFlippable: false,
+}) {
 
-  static defaultProps = {
-    isSelectable: false,
-    isFlippable: false,
-  }
+  const list = data.map((item, key) =>
+    <li key={`card${key}`}
+      data-oo-col="span4 span3@sm span2@md">
+      <Card character={{...item, id: key}} {...props}/>
+    </li>
+  );
 
-  render() {
-    const list = data.map((item, key) =>
-      <li key={`card${key}`}
-        data-oo-col="span4 span3@sm span2@md">
-        <Card character={{...item, id: key}} {...this.props}/>
-      </li>
-    );
-
-    return (
-      <div>
-        <ul className="list-unstyle" data-oo-row="stretch">
-          {list}
-        </ul>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <ul className="list-unstyle" data-oo-row="stretch">
+        {list}
+      </ul>
+    </div>
+  );
 }
 
 export default Deck;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../store';
 import {
@@ -14,59 +14,44 @@ interface CardProps {
   character: ICharacter;
   isSelectable?: boolean;
   isFlippable?: boolean;
-  isSelected?: boolean;
   setCharacter: typeof setCharacter,
   removeCharacter: typeof removeCharacter,
 }
 
-interface CardState {
-  isFlipped: boolean;
-}
+function Card(props: CardProps) {
 
-class Card extends React.Component<CardProps, CardState> {
+  const [isFlipped, setIsFlipped] = useState(false);
+  let isSelected = props.isSelectable && props.characterId === props.character.id;
 
-  constructor(props: CardProps) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  state: Readonly<CardState> = {
-    isFlipped: false,
-  }
-
-  handleClick() {
-    if (this.props.isSelectable) {
-      if (this.props.characterId === this.props.character.id) {
-        this.props.removeCharacter();
+  const handleClick = ():void => {
+    if (props.isSelectable) {
+      if (props.characterId === props.character.id) {
+        props.removeCharacter();
       } else {
-        this.props.setCharacter(this.props.character.id);
+        props.setCharacter(props.character.id);
       }
     }
-    if (this.props.isFlippable) {
-      this.setState(state => ({ isFlipped: !state.isFlipped }));
+    if (props.isFlippable) {
+      setIsFlipped(!isFlipped);
     }
   }
 
-  render() {
-    const { isFlipped } = this.state;
-    let isSelected = this.props.isSelectable && this.props.characterId === this.props.character.id;
-
-    return (
-      <div className={styles.wrapper}
-        onClick={this.handleClick}>
-        <div className={`${styles.card}
-          ${isFlipped ? styles.flipped : ''}
-          ${isSelected ? styles.selected : ''}
-        `}>
-          <div className={styles.front}>
-            <img src={this.props.character.img} alt={this.props.character.name} width="200" />
-            <h4>{this.props.character.name}</h4>
-          </div>
-          <div className={styles.back}>?</div>
+  return (
+    <div className={styles.wrapper}
+      onClick={handleClick}>
+      <div className={`
+        ${styles.card}
+        ${isFlipped ? styles.flipped : ''}
+        ${isSelected ? styles.selected : ''}
+      `}>
+        <div className={styles.front}>
+          <img src={props.character.img} alt={props.character.name} width="200" />
+          <h4>{props.character.name}</h4>
         </div>
+        <div className={styles.back}>?</div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 const mapStateToProps = (state: AppState) => {
