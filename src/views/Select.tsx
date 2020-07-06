@@ -9,7 +9,7 @@ import Button from '../components/Button';
 function SelectView(props: AppState) {
 
   const character = props.characterId
-    ? data[props.characterId]
+    ? data[props.characterId - 1]
     : null;
   
   const confirm = ():void => {

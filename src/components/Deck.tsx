@@ -12,12 +12,13 @@ function Deck(props:Options = {
   isFlippable: false,
 }) {
 
-  const list = data.map((item, key) =>
-    <li key={`card${key}`}
+  const list = data.map((item, key) => {
+    const id = key + 1;
+    return <li key={`card${id}`}
       data-oo-col="span4 span3@sm span2@md">
-      <Card character={{...item, id: key}} {...props}/>
+      <Card character={{...item, id}} {...props}/>
     </li>
-  );
+  });
 
   return (
     <ul className="list-unstyle" data-oo-row="stretch">
