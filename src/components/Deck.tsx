@@ -20,11 +20,9 @@ function Deck(props:Options = {
   );
 
   return (
-    <div>
-      <ul className="list-unstyle" data-oo-row="stretch">
-        {list}
-      </ul>
-    </div>
+    <ul className="list-unstyle" data-oo-row="stretch">
+      {list}
+    </ul>
   );
 }
 
