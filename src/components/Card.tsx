@@ -21,7 +21,13 @@ interface CardProps {
 function Card(props: CardProps) {
 
   const [isFlipped, setIsFlipped] = useState(false);
+
   let isSelected = props.isSelectable && props.characterId === props.character.id;
+  let cardClassName = [
+    styles.card,
+    isFlipped ? styles.flipped : '',
+    isSelected ? styles.selected : ''
+  ].join(' ');
 
   const handleClick = ():void => {
     if (props.isSelectable) {
@@ -39,11 +45,7 @@ function Card(props: CardProps) {
   return (
     <div className={styles.wrapper}
       onClick={handleClick}>
-      <div className={`
-        ${styles.card}
-        ${isFlipped ? styles.flipped : ''}
-        ${isSelected ? styles.selected : ''}
-      `}>
+      <div className={cardClassName}>
         <div className={styles.front}>
           <img src={props.character.img} alt={props.character.name} width="200" />
           <h4>{props.character.name}</h4>
