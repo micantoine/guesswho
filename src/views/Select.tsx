@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ICharacter } from '../interfaces';
 import { AppState } from '../store';
+import { ICharacter } from '../interfaces';
 import styles from './Select.module.scss';
 import Deck from '../components/Deck';
 import Button from '../components/Button';
@@ -30,7 +30,7 @@ function SelectView(props: ViewProps) {
             <Button onClick={confirm} variant="dark">
               Confirm
               <span>{character.name}</span>
-              <img src={character.img} alt={character.name} width="30" />
+              <img src={character.img} alt={character.name} width="30" height="30" />
             </Button>
           </div>
         </div>

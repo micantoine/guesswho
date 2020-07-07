@@ -1,22 +1,26 @@
-import React from 'react';
-import Card from './Card';
-import data from '../data.json';
+import React, { Props } from 'react';
+import { connect } from 'react-redux';
+import { AppState } from '../store';
+import { ICharacter } from '../interfaces';
 
-interface Options {
+import Card from './Card';
+
+interface DeckProps {
+  characters: ICharacter[];
   isSelectable?: boolean;
   isFlippable?: boolean;
 }
 
-function Deck(props:Options = {
-  isSelectable: false,
-  isFlippable: false,
-}) {
+function Deck(props: DeckProps) {
 
-  const list = data.map((item, key) => {
-    const id = key + 1;
-    return <li key={`card${id}`}
+  const list = props.characters.map((item) => {
+    return <li key={`card${item.id}`}
       data-oo-col="span4 span3@sm span2@md">
-      <Card character={{...item, id}} {...props}/>
+      <Card
+        character={{...item}}
+        isSelectable={props.isSelectable}
+        isFlippable={props.isFlippable}
+      />
     </li>
   });
 
@@ -27,4 +31,10 @@ function Deck(props:Options = {
   );
 }
 
-export default Deck;
+const mapStateToProps = (state: AppState) => {
+  return {
+    characters: state.game.characters
+  }
+}
+
+export default connect(mapStateToProps)(Deck);
