@@ -1,23 +1,33 @@
 import {
   CharacterListState,
   SET_CHARACTER_LIST,
-  GameActionTypes
+  SET_VIEW,
+  GameActionTypes,
+  ViewEnum
 } from './types';
 
-const initialGameState: CharacterListState = {
-  characters: [],
-};
+interface GameReducerState extends CharacterListState {
+  view: ViewEnum
+}
 
 export function gameReducer(
-  state = initialGameState,
+  state: GameReducerState = {
+    characters: [],
+    view: ViewEnum.Select,
+  },
   action: GameActionTypes
-): CharacterListState {
+): GameReducerState {
   switch (action.type) {
     case SET_CHARACTER_LIST:
       return {
         ...state,
         characters: action.characters,
       };
+    case SET_VIEW:
+      return {
+        ...state,
+        view: action.view
+      } 
     default:
       return state;
   }
