@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { AppState, PlayerState } from '../store';
-import data from '../data.json';
+import { ICharacter } from '../interfaces';
+import { AppState } from '../store';
 import styles from './Select.module.scss';
 import Deck from '../components/Deck';
 import Button from '../components/Button';
 
-function SelectView(props: PlayerState) {
+interface ViewProps {
+  selectedCharacter: ICharacter|null
+}
 
-  const character = props.characterId
-    ? data[props.characterId - 1]
-    : null;
+function SelectView(props: ViewProps) {
+
+  const character = props.selectedCharacter;
   
   const confirm = ():void => {
     debugger;
@@ -38,8 +40,9 @@ function SelectView(props: PlayerState) {
 }
 
 const mapStateToProps = (state: AppState) => {
+  const selection = state.game.characters.filter(item => item.id === state.players.characterId);
   return {
-    characterId: state.players.characterId
+    selectedCharacter: selection.length ? selection[0] : null
   }
 }
 
