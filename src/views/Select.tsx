@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../store';
+import { ViewEnum } from '../store/Game/types';
+import { setView } from '../store/Game/actions';
 import { ICharacter } from '../interfaces';
 import styles from './Select.module.scss';
 import Deck from '../components/Deck';
 import Button from '../components/Button';
 
 interface ViewProps {
-  selectedCharacter: ICharacter|null
+  selectedCharacter: ICharacter|null,
+  setView: typeof setView
 }
 
 function SelectView(props: ViewProps) {
@@ -15,7 +18,7 @@ function SelectView(props: ViewProps) {
   const character = props.selectedCharacter;
   
   const confirm = ():void => {
-    debugger;
+    props.setView(ViewEnum.Guess);
   }
 
   return (
@@ -46,4 +49,7 @@ const mapStateToProps = (state: AppState) => {
   }
 }
 
-export default connect(mapStateToProps)(SelectView);
+export default connect(
+  mapStateToProps,
+  { setView }
+)(SelectView);
