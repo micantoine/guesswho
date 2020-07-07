@@ -14,13 +14,10 @@ export function gameReducer(
 ): CharacterListState {
   switch (action.type) {
     case SET_CHARACTER_LIST:
-      // return {
-      //   ...state,
-      //   ...action.characters,
-      // };
-      return Object.assign({}, state, {
-        characters: action.characters
-      });
+      return {
+        ...state,
+        characters: action.characters,
+      };
     default:
       return state;
   }

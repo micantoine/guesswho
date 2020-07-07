@@ -8,7 +8,7 @@ export interface CharacterListState {
 
 export interface SetCharacterListAction {
   type: typeof SET_CHARACTER_LIST;
-  characters: CharacterListState;
+  characters: Array<ICharacter>;
 }
 
 export type GameActionTypes = SetCharacterListAction;
