@@ -1,26 +1,26 @@
 import { 
   SET_CHARACTER,
   REMOVE_CHARACTER,
-  PlayersState,
+  CharacterState,
   PlayersActionTypes
 } from './types';
 
-const initialState: PlayersState = {
+const initialCharacterState: CharacterState = {
   characterId: null
 };
 
 export function playersReducer(
-  state = initialState,
+  state = initialCharacterState,
   action: PlayersActionTypes
-): PlayersState {
+): CharacterState {
 
   switch (action.type) {
     case SET_CHARACTER:
     case REMOVE_CHARACTER:
-      return {
+      return Object.assign({}, state, {
         characterId: action.characterId
-      }
+      });
     default:
-      return state
+      return state;
   }
 }

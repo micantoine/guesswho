@@ -1,7 +1,7 @@
 export const SET_CHARACTER = "SET_CHARACTER";
 export const REMOVE_CHARACTER = "REMOVE_CHARACTER";
 
-export interface PlayersState {
+export interface CharacterState {
   characterId: number|null;
 }
 
@@ -11,7 +11,7 @@ export interface SetCharacterAction {
 }
 export interface RemoveCharacterAction {
   type: typeof REMOVE_CHARACTER;
-  characterId: null
+  characterId: null;
 }
 
 export type PlayersActionTypes = SetCharacterAction | RemoveCharacterAction;

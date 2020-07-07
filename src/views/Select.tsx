@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { AppState } from '../store';
+import { AppState, PlayerState } from '../store';
 import data from '../data.json';
 import styles from './Select.module.scss';
 import Deck from '../components/Deck';
 import Button from '../components/Button';
 
-function SelectView(props: AppState) {
+function SelectView(props: PlayerState) {
 
   const character = props.characterId
     ? data[props.characterId - 1]
@@ -39,7 +39,7 @@ function SelectView(props: AppState) {
 
 const mapStateToProps = (state: AppState) => {
   return {
-    characterId: state.characterId
+    characterId: state.players.characterId
   }
 }
 

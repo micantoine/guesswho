@@ -56,7 +56,7 @@ function Card(props: CardProps) {
 
 const mapStateToProps = (state: AppState) => {
   return {
-    characterId: state.characterId
+    characterId: state.players.characterId
   }
 }
 
