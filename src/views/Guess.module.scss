@@ -1,5 +1,17 @@
 @import '../index.scss';
 
-.myCharacter {
-  width: 150px;
+.character {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 124px;
+
+  img {
+    margin-right: 20px;
+  };
+  strong {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
 }

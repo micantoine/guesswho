@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { AppState } from '../store';
 import { ICharacter } from '../interfaces';
 import Deck from '../components/Deck';
-import Card from '../components/Card';
 import styles from './Guess.module.scss';
 
 interface ViewProps {
@@ -12,15 +11,17 @@ interface ViewProps {
 
 function GuessView(props: ViewProps) {
   return (
-    <>
-      <section className="container">
-        <h1>Guess The Character</h1>
-        <div className={styles.myCharacter}>
-          <Card {...props}/>
-        </div>
-        <Deck isFlippable={true} />
-      </section>
-    </>
+    <section className="container">
+      <div className={styles.character}>
+        <img src={props.character.img} width="120" height="120"/>
+        <p>
+          You're <strong>{props.character.name}</strong><br/>
+          Guess your opponent's character by asking question in turns.<br/>
+          Click on a card to hide it from the list.
+        </p>
+      </div>
+      <Deck isFlippable={true} />
+    </section>
   );
 }
 
