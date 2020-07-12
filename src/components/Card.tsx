@@ -46,7 +46,9 @@ function Card(props: CardProps) {
       ])}>
         <div className={styles.front}>
           <img src={props.character.img} alt={props.character.name} width="200" />
-          <h4>{props.character.name}</h4>
+          <svg viewBox="0 0 150 20" xmlns="http://www.w3.org/2000/svg">
+            <text text-anchor="middle" x="50%" y="15">{props.character.name}</text>
+          </svg>
         </div>
         <div className={styles.back}>?</div>
       </div>

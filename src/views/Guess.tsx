@@ -13,7 +13,7 @@ function GuessView(props: ViewProps) {
   return (
     <section className="container">
       <div className={styles.character}>
-        <img src={props.character.img} width="120" height="120"/>
+        <img src={props.character.img} />
         <p>
           You're <strong>{props.character.name}</strong><br/>
           Guess your opponent's character by asking question in turns.<br/>
