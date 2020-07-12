@@ -70,5 +70,29 @@
   {
     "name": "Mr. Funny",
     "img": "./assets/funny.jpg"
+  },
+  {
+    "name": "Mr. Mean",
+    "img": "./assets/mean.jpg"
+  },
+  {
+    "name": "Mr. Chatterbox",
+    "img": "./assets/chatterbox.jpg"
+  },
+  {
+    "name": "Mr. Fuzzy",
+    "img": "./assets/fuzzy.jpg"
+  },
+  {
+    "name": "Mr. Bounce",
+    "img": "./assets/bounce.jpg"
+  },
+  {
+    "name": "Mr. Muddle",
+    "img": "./assets/muddle.jpg"
+  },
+  {
+    "name": "Mr. Dizzy",
+    "img": "./assets/dizzy.jpg"
   }
 ]

@@ -16,7 +16,7 @@ function GuessView(props: ViewProps) {
         <img src={props.character.img} alt={props.character.name} />
         <p>
           You're <strong>{props.character.name}</strong><br/>
-          Guess your opponent's character by asking question in turns.<br/>
+          Guess your opponent's character by asking a question in turns.<br/>
           Click on a card to hide it from the list.
         </p>
       </div>

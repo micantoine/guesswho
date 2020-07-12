@@ -50,7 +50,7 @@ function Card(props: CardProps) {
             <text textAnchor="middle" x="50%" y="15">{props.character.name}</text>
           </svg>
         </div>
-        <div className={styles.back}>?</div>
+        <div className={styles.back}></div>
       </div>
     </div>
   );
