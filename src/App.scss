@@ -29,6 +29,20 @@
     'dark': #444,
     'success': #3fd03f,
   ),
+  variants: (
+    'circle': (
+      padding: 0,
+      display: inline-flex,
+      align-items: center,
+      justify-content: center,
+      min-width: 40px,
+      min-height: 40px,
+      color: #fff,
+      border-radius: 50%,
+      border-color: #444,
+      background-color: #444,
+    )
+  )
 ));
 
 @include generateUtilities((
