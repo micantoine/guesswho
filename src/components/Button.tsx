@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface ButtonProps {
+  className?: string;
   children: React.ReactNode;
   variant?: string;
   onClick: () => void;
@@ -9,6 +10,7 @@ interface ButtonProps {
 function Button(props:ButtonProps) {
   return (
     <button
+      className={props.className}
       onClick={props.onClick}
       data-oo-button={props.variant ? props.variant : ''}>
       {props.children}
