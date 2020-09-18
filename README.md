@@ -1,3 +1,6 @@
+# Guess Who
+Small application to replace your *guess who* board
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
