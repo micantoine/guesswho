@@ -15,7 +15,7 @@ function Deck(props: DeckProps) {
 
   const list = props.characters.map((item) => {
     return <li key={`card${item.id}`}
-      data-oo-col="span4 span3@sm span2@md">
+      data-oo-col="span4 span2@sm">
       <Card
         character={{...item}}
         isSelectable={props.isSelectable}

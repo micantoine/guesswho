@@ -1,16 +1,37 @@
 @import '../index.scss';
 
+.button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
 .character {
+  margin: 1rem auto;
+  padding-right: 8px;
+  overflow: hidden;
+
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 124px;
+  max-width: 625px;
+  font-size: .85em;
+  border: 1px solid #cdcdcd;
+  border-radius: 20px;
+  background-color: #f8f8f8;
+
+  @include breakpoint(sm) {
+    padding-right: 20px;
+    font-size: 1em;
+  }
 
   img {
+    margin-bottom: -1px;
     margin-right: 10px;
     align-self: flex-start;
-    width: 100px;
-    height: 100px;
+    width: 145px;
+    height: 145px;
+    border-bottom: 1px solid #cdcdcd;
+    border-right: 1px solid #cdcdcd;
 
     @include breakpoint(sm) {
       margin-right: 20px;
@@ -22,5 +43,12 @@
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: -1px;
+  }
+  .instruction {
+    margin-top: 10px;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 }
