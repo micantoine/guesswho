@@ -1,0 +1,5 @@
+@import '~oo-loop/loop';
+
+@include ooInit((
+  dataAttr: true,
+));
